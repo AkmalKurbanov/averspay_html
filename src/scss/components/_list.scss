@@ -1,0 +1,49 @@
+.list {
+  margin-left: 26%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  &__item {
+    padding: 27px 30px 27px 38px;
+    cursor: pointer;
+    transition: $tr;
+    border-radius: 10px;
+    // max-width: 545px;
+    max-width: 65%;
+    width: 100%;
+    margin-bottom: 20px;
+
+    &:hover {
+      background-color: $wc;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+
+    &__icon {
+      max-width: 73px;
+      width: 100%;
+      margin-right: 25px;
+    }
+
+    &__title {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0em;
+      color: $bc;
+      margin-bottom: 7px;
+    }
+
+    &__desc {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      letter-spacing: 0em;
+      color: #8e8e8e;
+    }
+  }
+}

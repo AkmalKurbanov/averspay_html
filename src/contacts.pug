@@ -1,0 +1,32 @@
+extends layout/main/main
+block title
+  | main
+block main
+  .wrapper.normal#swup(style="background-image: url('assets/img/bg.webp')")
+    .col
+      .col__angle
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path(d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path( stroke-width="200" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+      div(class="thematic-image").transition-fade
+        img(src="assets/img/purse.svg", alt="")
+      .col__wrap        
+        include includes/header/header
+        .col__content
+          | 1
+          
+      
+        .bottom#bottom
+          .pagination
+            | 2
+    .col
+      .col__content
+        | 3
+        
+
+  include includes/scripts 
+  
+    

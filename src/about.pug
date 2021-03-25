@@ -1,0 +1,68 @@
+extends layout/main/main
+block title
+  | main
+block main
+  .wrapper.wide#swup(style="background-image: url('assets/img/bg.webp')")
+    .col
+      .col__angle
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path(d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path( stroke-width="200" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+      .col__wrap        
+        include includes/header/header
+        .col__content
+          .col__titlle-wrap.transition-fadeTop
+            h1(class="col__title col__title--secondary wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Наша миссия:
+            h2(class="col__sub-title col__sub-title--secondary wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Мы работаем с людьми и для людей. Мы интегрируем простоту, <br> удобство и безопасность!
+          .about-desc 
+            .col__titlle-wrap.transition-fadeTop
+              h1(class="col__title col__title--secondary wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Интеграция
+              h2(class="col__sub-title col__sub-title--secondary wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Достижение синергии за счет <br> интеграции в единой
+                | экосистеме
+                | торговцев, поставщиков услуг и
+                | конечных потребителей на
+                | рынке.
+            .col__titlle-wrap.transition-fadeTop
+              h1(class="col__title col__title--secondary wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Все в одном
+              h2(class="col__sub-title col__sub-title--secondary wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Множество платежных и
+                | маркетинговых решений,
+                | объединенных для каждого
+                | клиента через мобильный интерфейс.
+
+        div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s")
+          .partners
+            .partners__slider.partners-js
+              mixin partnrer(img ,link)
+                .partners__item
+                  a(href=link) 
+                    img(src=img, alt="")
+              +partnrer('assets/img/megacom.png','#')        
+              +partnrer('assets/img/beeline.png','#')        
+              +partnrer('assets/img/o.png','#')        
+              +partnrer('assets/img/megaline.png','#')        
+              +partnrer('assets/img/citynet.png','#')        
+              +partnrer('assets/img/aknet.png','#')
+              +partnrer('assets/img/megacom.png','#')        
+   
+    .col
+      .col__content
+        .list.transition-fadeTop
+          mixin litsItem(icon,title,transitionDelay)
+            div(class="list__item item wow slideInRight" data-wow-duration="0.5s" data-wow-delay="0.5s")
+              .item__icon
+                img(src=icon, alt="")
+                //- i(class=icon)
+              .item__desc
+                h3.item__title=title
+          +litsItem('assets/img/about1.svg','10 лет на рынке.','.5s')
+          +litsItem('assets/img/about2.svg','1343214 партнеров.','.6s')
+          +litsItem('assets/img/about3.svg','700 услуг.','.7s')
+          +litsItem('assets/img/about4.svg','Свыше 1000000 транзакций в месяц.','.8s')
+         
+
+  include includes/scripts 
+  
+    

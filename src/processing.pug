@@ -1,0 +1,45 @@
+extends layout/main/main
+block title
+  | main
+block main
+  .wrapper.normal#swup(style="background-image: url('assets/img/bg.webp')")
+    .col
+      .col__angle
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path(d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path( stroke-width="200" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+      div(class="thematic-image").transition-fade
+        img(src="assets/img/proc.png", alt="")
+      .col__wrap        
+        include includes/header/header
+        .col__content
+          .col__titlle-wrap.transition-fadeTop
+            h1(class="col__title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Процессинг
+            h2(class="col__sub-title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Эффективное и надёжное программное <br> обеспечение “Global pay” 
+            a(href="/https://www.youtube.com/" class="btn wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".7s") Подать заявку на подключение
+        div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s")
+          .pagination  
+    .col
+      .col__content
+        .list.transition-fadeTop
+          mixin litsItem(icon,title,desc,transitionDelay)
+            div(class="list__item item wow slideInRight" data-wow-duration="1s" data-wow-delay=transitionDelay)
+              .item__icon
+                img(src=icon, alt="")
+                //- i(class=icon)
+              .item__desc
+                h3.item__title=title
+                p.item__desc=desc  
+          +litsItem('assets/img/proc1.svg','Система счетов','Разработанная система счетов для более гибкой и удобной работы платёжной системы.','.5s')
+          +litsItem('assets/img/proc2.svg','Быстрота', 'До 1000 операций в секунду.','.6s')
+          +litsItem('assets/img/proc3.svg','Аутсорсинг','Предоставление услуг по аутсорсингу процессинга для сторонних платёжных систем.','.7s')
+          +litsItem('assets/img/proc4.svg','Услуги в портфеле','В колчичестве более 700 услуг.','.8s')
+          +litsItem('assets/img/proc5.svg','Надёжность','Высокая степень защиты.','.9s')
+
+
+  include includes/scripts 
+  
+    

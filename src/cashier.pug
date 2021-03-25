@@ -1,0 +1,46 @@
+extends layout/main/main
+block title
+  | main
+block main
+  .wrapper.normal#swup(style="background-image: url('assets/img/bg.webp')")
+    .col
+      .col__angle
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path(d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+        .angle
+          svg(viewBox="0 0 1281.3333 1242.6667")
+            path( stroke-width="200" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+      div(class="thematic-image").transition-fade
+        img(src="assets/img/cashier.png", alt="")
+      .col__wrap        
+        include includes/header/header
+        .col__content.transition-fadeTop
+          .col__titlle-wrap
+            h1(class="col__title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Мобильное приложение “Averspay касса” 
+            h2(class="col__sub-title  wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Умное решениедля торговых точек позволяющее <br> превратить мобильный телефон в PoS терминал
+
+            a(href="/https://www.youtube.com/" class="btn wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".7s") Подать заявку на подключение
+      
+        div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s")
+          .pagination  
+    .col
+      .col__content
+        .list.transition-fadeTop
+          mixin litsItem(icon,title,desc,transitionDelay)
+            div(class="list__item item wow slideInRight" data-wow-duration="1s" data-wow-delay=transitionDelay)
+              .item__icon
+                img(src=icon, alt="")
+                //- i(class=icon)
+              .item__desc
+                h3.item__title=title
+                p.item__desc=desc  
+          +litsItem('assets/img/cashier1.svg','Низкие комиссии','Более выгодная альтернатива банковским PoS терминалам.','.5s')
+          +litsItem('assets/img/cashier2.svg','Удобство', 'Отслеживание истории платежей по общей кассе а также по каждому отдельному кассиру.','.6s')
+          +litsItem('assets/img/cashier3.svg','Доступность','Возможность принимать любые популярные методы платежей.','.7s')
+          +litsItem('assets/img/cashier4.svg','Осутствие капитальных вложений','Превратите мобильный телефон в полноценный PoS терминал.','.8s')
+
+
+  include includes/scripts 
+  
+    

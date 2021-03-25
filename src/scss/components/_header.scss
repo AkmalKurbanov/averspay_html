@@ -1,0 +1,150 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  // position: absolute;
+  // z-index: 3;
+
+  .logo {
+    max-width: 150px;
+    width: 100%;
+    margin-right: 147px;
+  }
+
+  .nav {
+    ul {
+      li {
+        display: inline-flex;
+        margin-right: 46px;
+        position: relative;
+        cursor: pointer;
+        padding-bottom: 8px;
+        align-items: center;
+
+        &.show {
+          ul {
+            display: block;
+          }
+        }
+
+        i {
+          transform: rotate(180deg);
+          color: $wc;
+          transition: $tr;
+          margin-right: -5px;
+
+          &:before {
+            margin: 0;
+          }
+        }
+
+        &:after {
+          position: absolute;
+          content: '';
+          width: 0;
+          height: 1px;
+          background-color: $wc;
+          left: 0;
+          bottom: 0;
+          transition: $tr;
+        }
+
+        &:hover {
+          a {
+            color: $wc;
+          }
+
+          &:after {
+            width: 100%;
+          }
+        }
+
+        &.nav__item_active {
+          position: relative;
+
+          &:after {
+            width: 100%;
+          }
+
+          a {
+            font-weight: 500;
+            color: $wc;
+            position: relative;
+            display: block;
+          }
+
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 21px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        ul {
+          min-width: 177px;
+          width: 100%;
+          position: absolute;
+          top: 100%;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 10px;
+          box-sizing: border-box;
+          display: none;
+          margin-top: 14px;
+          z-index: 3;
+
+          li {
+            display: block;
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 0;
+
+            &:first-child {
+              a {
+                padding: 27px 10px 0 21px;
+              }
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+
+              a {
+                padding: 0 10px 27px 21px;
+              }
+            }
+
+            &:after {
+              display: none;
+            }
+
+            a {
+              color: #76787B !important;
+              font-size: 20px;
+              font-family: $raleway !important;
+              font-weight: 500 !important;
+              padding: 0 10px 0 21px;
+
+              &:hover {
+                color: $bc !important;
+              }
+            }
+
+            &.nav__item_active {
+              a {
+                color: $bc !important;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
