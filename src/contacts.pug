@@ -2,31 +2,65 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper.normal#swup(style="background-image: url('assets/img/bg.webp')")
-    .col
+  .wrapper.contacts#swup(style="background-image: url('assets/img/bg.webp')")
+    .col(style="background-image: url('assets/img/bg.webp')")  
       .col__angle
         .angle
           svg(viewBox="0 0 1281.3333 1242.6667")
-            path(d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+            path(style="fill: #fff;" d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
         .angle
           svg(viewBox="0 0 1281.3333 1242.6667")
-            path( stroke-width="200" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
-      div(class="thematic-image").transition-fade
-        img(src="assets/img/purse.svg", alt="")
+            path(style="fill: #fff;" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
       .col__wrap        
         include includes/header/header
-        .col__content
-          | 1
-          
-      
-        .bottom#bottom
-          .pagination
-            | 2
-    .col
-      .col__content
-        | 3
-        
+        .col__content.transition-fadeTop
+          .contacts
+            div(class="contacts__item wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".3s")
+              .col__titlle-wrap.transition-fadeTop
+                h1.col__title.col__title--thin Связаться с нами:
+              ul
+                mixin tel(operator,tel)
+                  li 
+                    span
+                      img(src=operator, alt="")
+                    a(href="#")=tel
+                +tel('assets/img/operator-o.png','+996 664 522 234')       
+                +tel('assets/img/operator-beeline.png','+996 664 522 234')       
+                +tel('assets/img/operator-megacom.png','+996 664 522 234')       
+            div(class="contacts__item wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".5s")
+              .col__titlle-wrap.transition-fadeTop
+                h1.col__title.col__title--thin Наш адрес:
+                ul
+                  li Кыргызстан, г. Бишкек, БЦ Монолит (офис 803-804)
+        div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s")
+          .contacts__item.contacts__item--social
+            .col__titlle-wrap.transition-fadeTop
+              h1.col__title.col__title--thin Социальные сети:
+            ul.social
+              mixin social(icon, link)
+                li
+                  span
+                    a(href=link)
+                      img(src=icon, alt="") 
+              +social('assets/img/instagram.png')  
+              +social('assets/img/facebook.png')  
+              +social('assets/img/twitter.png')  
 
-  include includes/scripts 
+    .col
+      .col__wrap
+        .col__angle
+          .angle
+            svg(viewBox="0 0 1281.3333 1242.6667")
+              path(style="fill: #fff;" d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+          .angle
+            svg(viewBox="0 0 1281.3333 1242.6667")
+              path(style="fill: #fff;" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+        .col__content
+          .contacts_map.transition-fadeTop 
+            .map_wrap
+              
+  include includes/scripts
+
+
   
     

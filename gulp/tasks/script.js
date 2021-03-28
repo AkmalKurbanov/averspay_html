@@ -16,6 +16,8 @@ module.exports = function script() {
       'node_modules/wow.js/dist/wow.js',
       'node_modules/swup/dist/swup.js',
       'node_modules/@swup/scripts-plugin/dist/SwupScriptsPlugin.min.js',
+      'node_modules/@swup/slide-theme/dist/SwupSlideTheme.min.js',
+      'node_modules/@swup/debug-plugin/dist/SwupDebugPlugin.min.js',
       'node_modules/slick-carousel/slick/slick.min.js',
       'src/js/scripts/*.js'
     ])

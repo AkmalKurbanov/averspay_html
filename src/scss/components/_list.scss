@@ -1,21 +1,38 @@
 .list {
-  margin-left: 26%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100%;
+  overflow-y: scroll;
+  margin-left: var(--thematic);
+
   &__item {
     padding: 27px 30px 27px 38px;
     cursor: pointer;
     transition: $tr;
     border-radius: 10px;
-    // max-width: 545px;
     max-width: 65%;
     width: 100%;
     margin-bottom: 20px;
 
+    @media screen and (max-width: 1770px) {
+      padding: 20px 25px;
+      max-width: 75%;
+    }
+
+    @media screen and (max-width: 1600px) {
+      max-width: 85%;
+    }
+
+    @media screen and (max-width: 1500px) {
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+
     &:hover {
       background-color: $wc;
+    }
+
+    &:last-child {
+      margin: 0;
     }
   }
 
@@ -27,23 +44,56 @@
       max-width: 73px;
       width: 100%;
       margin-right: 25px;
+
+      @media screen and (max-width: 1500px) {
+        max-width: 60px;
+        margin-right: 20px;
+      }
     }
 
     &__title {
       font-size: 20px;
       font-weight: 400;
-      line-height: 22px;
+      line-height: rem(22);
       letter-spacing: 0em;
       color: $bc;
       margin-bottom: 7px;
+
+      @media screen and (max-width: 1770px) {
+        font-size: rem(19);
+        line-height: rem(21);
+        margin-bottom: 6px;
+      }
+
+      @media screen and (max-width: 1600px) {
+        font-size: rem(18);
+        line-height: rem(20);
+        margin-bottom: 5px;
+      }
+
+      @media screen and (max-width: 1500px) {
+        font-size: rem(17);
+        line-height: rem(29);
+        margin-bottom: 4px;
+      }
     }
 
     &__desc {
       font-size: 16px;
       font-weight: 400;
-      line-height: 21px;
+      line-height: rem(21);
       letter-spacing: 0em;
       color: #8e8e8e;
+
+      @media screen and (max-width: 1770px) {
+        font-size: rem(15);
+        line-height: rem(20);
+      }
+
+      @media screen and (max-width: 1500px) {
+        font-size: rem(14);
+        line-height: rem(19);
+      }
     }
   }
 }

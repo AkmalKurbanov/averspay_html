@@ -4,7 +4,9 @@
   "description": "Project",
   "main": "index.js",
   "dependencies": {
+    "@swup/debug-plugin": "^1.0.3",
     "@swup/scripts-plugin": "^1.1.0",
+    "@swup/slide-theme": "^1.0.5",
     "jquery": "^3.4.1",
     "normalize.css": "^8.0.1",
     "slick-carousel": "^1.8.1",

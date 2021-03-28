@@ -2,15 +2,15 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper.wide#swup(style="background-image: url('assets/img/bg.webp')")
-    .col
+  .wrapper.wide.about#swup(style="background-image: url('assets/img/bg.webp')")
+    .col(style="background-image: url('assets/img/bg.webp')")  
       .col__angle
         .angle
           svg(viewBox="0 0 1281.3333 1242.6667")
-            path(d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
+            path(fill="#ffffffde" d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
         .angle
           svg(viewBox="0 0 1281.3333 1242.6667")
-            path( stroke-width="200" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+            path(fill="#ffffffde" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
       .col__wrap        
         include includes/header/header
         .col__content
@@ -51,7 +51,7 @@ block main
       .col__content
         .list.transition-fadeTop
           mixin litsItem(icon,title,transitionDelay)
-            div(class="list__item item wow slideInRight" data-wow-duration="0.5s" data-wow-delay="0.5s")
+            div(class="list__item item wow slideInRight" data-wow-duration="0.5s" data-wow-delay=transitionDelay)
               .item__icon
                 img(src=icon, alt="")
                 //- i(class=icon)
