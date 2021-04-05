@@ -4,28 +4,93 @@
   flex-direction: row;
   position: relative;
   width: 100%;
-  // position: absolute;
-  // z-index: 3;
+
+  @media screen and (max-width: 1024px) {
+    background: rgba(17, 59, 138, 0.7);
+    padding: 29px 80px;
+    box-sizing: border-box;
+  }
+
+  @include md {
+    padding: 20px 50px;
+  }
+
+  @include sm {
+    padding: 17px 30px;
+  }
+
+  @include xs {
+    padding: 15px;
+  }
 
   .logo {
-    max-width: 150px;
+    max-width: 140px;
     width: 100%;
     margin-right: 147px;
+    position: relative;
 
     @media screen and (max-width: 1770px) {
       margin-right: 100px;
     }
 
     @media screen and (max-width: 1500px) {
-      margin-right: 50px;
+      margin-right: 80px;
       max-width: 130px;
     }
+
     @include lg {
       margin-right: 30px;
     }
+
+    // word slide start
+    #slide_word {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      transition: $tr;
+      overflow: hidden;
+      height: 40px;
+      width: 120px;
+      opacity: 0;
+
+      .slide_word_item {
+        top: 50%;
+        transform: translateY(100%);
+        transition: $tr;
+        opacity: 0;
+        position: absolute;
+        text-transform: uppercase;
+        color: $wc;
+        font-size: rem(13);
+
+        @media screen and (max-width: 1500px) {
+          font-size: rem(12);
+        }
+
+        @include lg {
+          display: none;
+        }
+
+        &.current {
+          transform: translateY(-50%);
+          opacity: 1;
+        }
+      }
+    }
+
+    // word slide end
   }
 
   .nav {
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+
+
     ul {
       li {
         display: inline-flex;
@@ -34,25 +99,19 @@
         cursor: pointer;
         padding-bottom: 8px;
         align-items: center;
-        
+
         @media screen and (max-width: 1770px) {
           margin-right: 30px;
         }
-        
+
         @include lg {
           margin-right: 15px;
           padding-bottom: 5px;
         }
 
-        &.show {
-          ul {
-            display: block;
-          }
-        }
-
         i {
           transform: rotate(180deg);
-          color: $wc;
+          color: rgba(255, 255, 255, 0.7);
           transition: $tr;
           margin-right: -5px;
 
@@ -60,6 +119,17 @@
             margin: 0;
           }
         }
+
+        &.show {
+          i {
+            transform: rotate(0);
+          }
+
+          ul {
+            display: block;
+          }
+        }
+
 
         &:after {
           position: absolute;
@@ -96,6 +166,10 @@
             display: block;
           }
 
+          i {
+            color: $wc;
+          }
+
         }
 
         &:last-child {
@@ -111,15 +185,16 @@
           font-size: rem(14);
           font-weight: 400;
           line-height: rem(21);
-          color: rgba(255, 255, 255, 0.7);
+          color: $wc;
           display: block;
+
           @include lg {
             font-size: 13px;
           }
         }
 
         ul {
-          min-width: 177px;
+          min-width: 160px;
           width: 100%;
           position: absolute;
           top: 100%;
@@ -132,13 +207,13 @@
 
           li {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             width: 100%;
             padding: 0;
 
             &:first-child {
               a {
-                padding: 27px 10px 0 21px;
+                padding: 15px 10px 0 15px;
               }
             }
 
@@ -146,7 +221,7 @@
               margin-bottom: 0;
 
               a {
-                padding: 0 10px 27px 21px;
+                padding: 0 10px 15px 15px;
               }
             }
 
@@ -155,11 +230,9 @@
             }
 
             a {
+              font-size: rem(15);
               color: #76787B !important;
-              font-size: rem(20);
-              font-family: $raleway !important;
-              font-weight: 500 !important;
-              padding: 0 10px 0 21px;
+              padding: 0 10px 0 15px;
 
               &:hover {
                 color: $bc !important;
@@ -177,4 +250,114 @@
 
     }
   }
+}
+
+.scroll-block {
+  overflow: hidden;
+}
+
+html.is-animating .mobile_menu {
+  top: -100%;
+  opacity: 0;
+}
+
+.mobile_menu {
+  z-index: 9;
+  background: rgba(17, 59, 138, 1);
+  position: absolute;
+  top: -100%;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: $tr;
+  opacity: 0;
+
+  .mobile_menu-wrap {
+    overflow-y: scroll;
+    padding: 30px 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+
+
+  ul {
+
+    li {
+      text-align: center;
+      margin-bottom: 45px;
+
+      @include md {
+        margin-bottom: 30px;
+      }
+
+      @include sm {
+        margin-bottom: 27px;
+      }
+
+      @include xs {
+        margin-bottom: 25px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.nav__item_active {
+        a {
+          color: $wc;
+        }
+      }
+
+      a {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: rem(35);
+
+        @include md {
+          font-size: rem(25);
+          line-height: rem(34);
+        }
+
+        @include sm {
+          font-size: rem(23);
+          line-height: rem(30);
+        }
+
+        @include xs {
+          font-size: rem(20);
+          line-height: rem(24);
+        }
+
+        .nav__item_active {
+
+          li,
+          a {
+            color: $wc;
+          }
+        }
+      }
+    }
+  }
+
+
+  .second_level_menu {
+    ul {
+      margin-bottom: 60px;
+    }
+  }
+
+
+  &.open-menu {
+    top: 0;
+    opacity: 1;
+  }
+
+
 }

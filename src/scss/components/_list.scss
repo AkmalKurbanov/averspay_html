@@ -2,7 +2,27 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-left: var(--thematic);
+
+  @media screen and (max-width: 1024px) {
+    overflow-y: auto !important;
+    margin: auto !important;
+    align-items: center !important;
+    padding: 120px 0 60px !important;
+  }
+
+  @include md {
+    padding: 70px 0 40px !important;
+  }
+
+  @include sm {
+    padding: 50px 0 35px !important;
+  }
+
+  @include xs {
+    padding: 25px 0 30px !important;
+  }
 
   &__item {
     padding: 27px 30px 27px 38px;
@@ -27,18 +47,44 @@
       margin-bottom: 15px;
     }
 
+
+
+
     &:hover {
       background-color: $wc;
     }
 
-    &:last-child {
-      margin: 0;
-    }
+
   }
 
   .item {
     display: flex;
     flex-direction: row;
+
+    @media screen and (max-width: 1024px) {
+      flex-direction: column !important;
+      align-items: center;
+      margin-bottom: 35px;
+
+      * {
+        text-align: center;
+      }
+    }
+
+    @include md {
+      margin-bottom: 25px;
+    }
+
+    @include xs {
+      margin-bottom: 18px;
+      max-width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
 
     &__icon {
       max-width: 73px;
@@ -48,6 +94,27 @@
       @media screen and (max-width: 1500px) {
         max-width: 60px;
         margin-right: 20px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        margin: auto;
+        max-width: 110px;
+        margin-bottom: 25px;
+      }
+
+      @include md {
+        max-width: 90px;
+        margin-bottom: 20px;
+      }
+
+      @include sm {
+        max-width: 85px;
+        margin-bottom: 17px;
+      }
+
+      @include xs {
+        max-width: 80px;
+        margin-bottom: 15px;
       }
     }
 
@@ -76,6 +143,24 @@
         line-height: rem(29);
         margin-bottom: 4px;
       }
+
+      @media screen and (max-width: 1024px) {
+        font-size: rem(32);
+        line-height: rem(34.56);
+        margin-bottom: 20px;
+      }
+
+      @include md {
+        font-size: rem(27);
+        line-height: rem(29);
+        margin-bottom: 15px;
+      }
+
+      @include xs {
+        font-size: rem(24);
+        line-height: rem(25.92);
+        margin-bottom: 8px;
+      }
     }
 
     &__desc {
@@ -93,6 +178,21 @@
       @media screen and (max-width: 1500px) {
         font-size: rem(14);
         line-height: rem(19);
+      }
+
+      @media screen and (max-width: 1024px) {
+        font-size: rem(27);
+        line-height: rem(35.50);
+      }
+
+      @include md {
+        font-size: rem(24);
+        line-height: rem(30.50);
+      }
+
+      @include xs {
+        font-size: rem(14);
+        line-height: rem(18.41);
       }
     }
   }

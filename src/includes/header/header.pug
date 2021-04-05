@@ -2,11 +2,16 @@ header.header.transition-fade
   .logo
     a(href="/")
       img(src="assets/img/logo.svg", alt="") 
+    #slide_word
+      mixin wordItem(word)
+        .slide_word_item=word 
+      +wordItem('Надежно')  
+      +wordItem('Быстро')  
+      +wordItem('Удобно')  
   nav.nav
     ul
-      li.nav__item.nav__item_active
-        a(href='#') Продукты
-        i.icon-up-open
+      li.nav__item
+        a(href='') Продукты
         ul
           li.nav__item_active
             a(href='/') Кошелёк
@@ -18,5 +23,10 @@ header.header.transition-fade
             a(href='/cashier.html') Касса
       li.nav__item
         a(href='/about.html') О компании
+        
       li.nav__item
         a(href='/contacts.html') Контакты
+  .hamburger
+    .hamburger__wrap
+      i
+      i

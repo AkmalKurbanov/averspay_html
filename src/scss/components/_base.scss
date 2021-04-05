@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -8,6 +9,36 @@ body {
   height: 100%;
   position: relative;
   font-family: $roboto;
+
+  @media screen and (max-width: 1024px) {
+    height: auto;
+  }
+}
+
+.them-demonstration-layout {
+  transition: $tr;
+  overflow: hidden;
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    transition: $tr;
+    z-index: 9;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+
+  @media screen and (max-width: 1024px) {
+    display: block;
+  }
 }
 
 a {
@@ -43,19 +74,7 @@ button {
   background: transparent;
 }
 
-.social {
-  li {
-    margin-right: 13px;
 
-    span {
-      margin-right: 0 !important;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
 
 // container
 .container {
@@ -88,15 +107,48 @@ button {
 
 // container end
 
+
+// pursuer start
+#pursuer {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 2px solid #568EFF;
+  transition: all .6s;
+  transition-timing-function: ease-out;
+  position: absolute;
+  z-index: 9999999;
+  top: -100%;
+  pointer-events: none;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+// pursuer end
+
 // col start
 .wrapper {
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center right;
+  background-position: top right;
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($wc, 0.78);
+    // background-color: rgba($wc, 0.);
+  }
 
   @media screen and (max-width: 1024px) {
     flex-direction: column;
@@ -113,38 +165,6 @@ button {
 
     @media screen and (max-width: 1024px) {
       max-width: 100%;
-    }
-
-    &__angle {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-
-      @media screen and (max-width: 1024px) {
-        display: none;
-      }
-
-      .angle {
-        position: relative;
-
-        svg {
-          position: relative;
-        }
-
-        &:last-child {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 100%;
-
-          svg {
-            position: absolute;
-            bottom: 0;
-          }
-        }
-      }
     }
 
     &__wrap {
@@ -171,12 +191,19 @@ button {
     }
 
     &:first-child {
-
       @media screen and (max-width: 1024px) {
         height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         background-size: cover;
         background-position: bottom left;
+        background-image: url('/assets/img/bg.webp')
       }
+
+
+      @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+        height: auto;
+      }
+
 
       .col__content {
         margin: 0;
@@ -184,13 +211,41 @@ button {
         width: 100%;
         padding-right: var(--totalWidth);
         box-sizing: border-box;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 1024px) {
+          padding-left: 77px;
+        }
+
+        @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+          height: 80vh;
+          justify-content: center;
+        }
+
+        @include md {
+          padding-left: 50px;
+        }
+
+        @include sm {
+          padding-left: 30px;
+        }
+
+        @include xs {
+          padding-left: 15px;
+        }
+
+        @media (orientation: landscape) {
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+
       }
 
       .col__wrap {
         border-radius: 0 2.8% 2.8% 0;
         height: 100%;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: start;
         overflow: hidden;
         padding: 52px 30px 52px 96px;
         position: relative;
@@ -201,11 +256,16 @@ button {
         }
 
         @media screen and (max-width: 1024px) {
-          padding: 72px 77px;
+          padding: 0;
+          padding-bottom: 72px;
         }
 
         @include md {
           border-radius: 0 2.5% 2.5% 0;
+        }
+
+        @include xs {
+          padding-bottom: 44px;
         }
 
         &:before {
@@ -215,7 +275,7 @@ button {
           right: 0;
           bottom: 0;
           left: 0;
-          background-color: rgba(0, 51, 129, 0.8);
+          background: linear-gradient(237.42deg, rgba(73, 103, 170, 0.9) -3.56%, rgba(0, 51, 129, 0.9) 100.19%);
         }
       }
     }
@@ -243,34 +303,50 @@ button {
         height: 100%;
         justify-content: center;
 
-        ::-webkit-scrollbar {
-          display: none;
-        }
 
-        &:before {
-          position: absolute;
-          content: '';
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-color: rgba($wc, 0.87);
-        }
+        // &:before {
+        //   position: absolute;
+        //   content: '';
+        //   top: 0;
+        //   right: 0;
+        //   bottom: 0;
+        //   left: 0;
+        //   background-color: rgba($wc, 0.87);
+        // }
 
-      }
-
-      .col__angle {
-        transform: rotate(-180deg);
       }
     }
 
     .pagination {
+      ul {
+        display: flex;
+        width: 80%;
+
+        @include xs {
+          width: 100%;
+        }
+      }
+
       li {
-        display: inline-block;
         margin-right: 17px;
+        max-width: 110px;
+        width: 100%;
+        height: 6px;
 
         @media screen and (max-width: 1024px) {
           margin-right: 33.78px;
+        }
+
+        @include md {
+          margin-right: 20px;
+        }
+
+        @include sm {
+          margin-right: 15px;
+        }
+
+        @include xs {
+          margin-right: 10px;
         }
 
         &:last-child {
@@ -278,27 +354,12 @@ button {
         }
 
         a {
-          min-width: 109.8px !important;
-          width: 100%;
-          height: 6px;
           border-radius: 51px;
           background-color: rgba(255, 255, 255, 0.2);
           display: flex;
           position: relative;
           overflow: hidden;
-
-          @media screen and (max-width: 1500px) {
-            min-width: 90px !important;
-          }
-
-          @include lg {
-            min-width: 80px !important;
-            height: 5px;
-          }
-
-          @media screen and (max-width: 1024px) {
-            min-width: 142.66px !important;
-          }
+          height: 100%;
 
           &:before {
             position: absolute;
@@ -363,8 +424,28 @@ button {
         margin-bottom: 26px;
       }
 
+      @include md {
+        font-size: rem(35);
+        line-height: rem(38);
+        margin-bottom: 23px;
+      }
+
+      @include sm {
+        font-size: rem(30);
+        line-height: rem(33);
+        margin-bottom: 22px;
+      }
+
+      @include xs {
+        font-size: rem(25);
+        line-height: rem(26.5);
+        margin-bottom: 20px;
+      }
+
       &--secondary {
         margin-bottom: 7px;
+        font-size: rem(19) !important;
+        line-height: rem(20.96) !important;
       }
 
       &--thin {
@@ -377,6 +458,22 @@ button {
         text-align: left;
         margin-bottom: 20px;
         color: rgba(182, 209, 255, 1);
+
+        @media screen and (max-width: 1500px) {
+          font-size: rem(22);
+          line-height: rem(24);
+        }
+
+        @media screen and (max-width: 1024px) {
+          font-size: rem(25);
+          line-height: rem(27);
+        }
+
+        @include xs {
+          font-size: rem(14);
+          line-height: rem(16);
+          margin-bottom: 15px;
+        }
       }
     }
 
@@ -398,9 +495,58 @@ button {
         line-height: rem(26.4);
       }
 
+      @include md {
+        font-size: rem(18);
+        line-height: rem(24.4);
+        margin-bottom: 23px;
+      }
+
+      @include sm {
+        font-size: rem(16);
+        line-height: rem(20);
+        margin-bottom: 21px;
+      }
+
+      @include xs {
+        font-size: rem(14);
+        line-height: rem(16.8);
+        margin-bottom: 20px;
+
+        br {
+          display: none;
+        }
+      }
+
+
       &--secondary {
         font-size: rem(16);
         line-height: rem(20.96);
+
+        @media screen and (max-width: 1024px) {
+          margin-bottom: 33px;
+          font-size: rem(22);
+          line-height: rem(26.4);
+          font-weight: 300;
+        }
+
+        @include md {
+          font-size: rem(20);
+          line-height: rem(24);
+          margin-bottom: 30px;
+        }
+
+        @include sm {
+          font-size: rem(18);
+          line-height: rem(22);
+          margin-bottom: 28px;
+        }
+
+        @include xs {
+          font-size: rem(14);
+          line-height: rem(18);
+          font-weight: 400;
+        }
+
       }
     }
 
@@ -422,10 +568,18 @@ button {
     .col {
       &:first-child {
         max-width: 60%;
+
+        @media screen and (max-width: 1024px) {
+          max-width: 100%;
+        }
       }
 
       &:last-child {
         max-width: 40%;
+
+        @media screen and (max-width: 1024px) {
+          max-width: 100%;
+        }
       }
     }
   }
@@ -435,62 +589,86 @@ button {
 
 // btn start 
 .btn {
-  border: 1px solid $wc;
-  padding: 0 27px;
-  height: 60px;
-  color: $wc;
-  font-weight: 500;
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  position: relative;
   border-radius: 10px;
+  border: 1px solid $wc;
+  display: inline-block;
 
-  &:hover {
-    background-color: $wc;
-    color: $bc;
-  }
-
-  &--dwnld {
-    padding: 0 22px;
+  @include xs {
+    border-radius: 7px;
 
     &:hover {
-      background-color: transparent;
-      color: $wc;
+      background-color: #fff;
+    }
+  }
 
-      circle {
-        display: none;
-      }
+  &__bubble {
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    pointer-events: none;
 
+    @include xs {
+      display: none;
+    }
+  }
+
+  &__inner {
+    color: $wc;
+    font-weight: 500;
+    transition: 400ms;
+    text-decoration: none;
+    padding: 0 27px;
+    z-index: 100000;
+    position: relative;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @include xs {
+      height: 45px;
+      padding: 0 15px;
+    }
+
+    &:hover {
       svg {
         path {
-          &.androin-head {
-            animation: shake 1.4s cubic-bezier(.36, .07, .19, .97) both;
-            transform-origin: top;
-          }
+          fill: $bc;
         }
       }
-    }
 
-    svg {
-      margin-right: 13px;
-      position: relative;
-
-      path,
-      circle {
-        transition: $tr;
-      }
-
-      .androin-head {
-        text-align: center;
-      }
-
-      .eye-blink {
-        animation: blink 3s infinite cubic-bezier(.36, .07, .19, .97) both;
-        animation-delay: 1;
-        fill: rgba($bc, 0.7);
+      * {
+        color: $bc;
       }
     }
+
+  }
+
+  &__text {
+    position: relative;
+    z-index: 10000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    @include xs {
+      text-align: center;
+      font-size: rem(14);
+      min-height: 45px;
+      border-radius: 7px;
+    }
+  }
+
+  &__download {
+    font-weight: 600;
 
     span {
       font-weight: 300;
@@ -499,6 +677,99 @@ button {
     }
   }
 
+  &--dwnld {
+
+    .btn__inner {
+      &:hover {
+        background-color: transparent;
+        color: $wc;
+
+        circle {
+          display: none;
+        }
+
+        svg {
+          path {
+            &.androin-head {
+              animation: shake 1.4s cubic-bezier(.36, .07, .19, .97) both;
+              transform-origin: top;
+            }
+          }
+        }
+      }
+
+      svg {
+        margin-right: 13px;
+        position: relative;
+        height: 27px;
+
+        path,
+        circle {
+          transition: $tr;
+        }
+
+        .androin-head {
+          text-align: center;
+        }
+
+        .eye-blink {
+          animation: blink 3s infinite cubic-bezier(.36, .07, .19, .97) both;
+          animation-delay: 1;
+          fill: rgba($bc, 0.7);
+        }
+      }
+    }
+
+    .btn__text {
+      @include xs {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.explode-bubble {
+  animation: explode .6s forwards;
+}
+
+.desplode-bubble {
+  animation: desplode .6s forwards;
+}
+
+@keyframes explode {
+  0% {
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background-color: rgba($wc, 0.2);
+  }
+
+  100% {
+    width: 1000px;
+    height: 1000px;
+    margin-left: -500px;
+    margin-top: -500px;
+    background-color: rgba($wc, 1);
+  }
+}
+
+@keyframes desplode {
+  0% {
+    width: 1000px;
+    height: 1000px;
+    margin-left: -500px;
+    margin-top: -500px;
+    background-color: rgba($wc, 0.8);
+  }
+
+  100% {
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background-color: rgba($wc, 0.6);
+  }
 }
 
 @keyframes shake {
@@ -561,6 +832,80 @@ button {
   }
 }
 
+.play_btn_wrap {
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  padding-left: 20px;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 20s;
+  transition: $tr;
+
+  &.--hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: flex;
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: inherit;
+  }
+
+  @include md {
+    height: 130px;
+    width: 130px;
+    padding-left: 15px;
+  }
+
+  @include sm {
+    height: 110px;
+    width: 110px;
+    padding-left: 10px;
+  }
+
+  @include xs {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.play_btn {
+  width: 0;
+  height: 0;
+  border-top: 40px solid transparent;
+  border-left: 70px solid $wc;
+  border-bottom: 40px solid transparent;
+
+  @include md {
+    border-top: 30px solid transparent;
+    border-left: 60px solid $wc;
+    border-bottom: 30px solid transparent;
+  }
+
+  @include sm {
+    border-top: 25px solid transparent;
+    border-left: 50px solid $wc;
+    border-bottom: 25px solid transparent;
+  }
+
+  @include xs {
+    border-top: 20px solid transparent;
+    border-left: 40px solid $wc;
+    border-bottom: 20px solid transparent;
+  }
+}
+
 // btn end 
 
 .transition-fade {
@@ -586,14 +931,14 @@ html.is-animating .transition-fadeTop {
   transition: all .5s;
   transition-delay: 0.4s;
   transform: translate(50%, -50%) scale(1) !important;
+
+  @media screen and (max-width: 1024px) {
+    transform: translate(40%, -50%) scale(1) !important;
+  }
 }
 
 html.is-animating .transition-thematicImage {
   transform: translate(50%, -50%) scale(0) !important;
-}
-
-html.is-animating .transition-terminalFade {
-  transform: translate(50%, 2000px) !important;
 }
 
 html.is-animating .pagination {
@@ -603,10 +948,12 @@ html.is-animating .pagination {
 }
 
 .transition-fadeTop {
-  transition: 0.4s;
+  transition: all 1s;
   opacity: 1;
   transform: translateY(0);
 }
+
+
 
 
 
@@ -616,6 +963,24 @@ html.is-animating .pagination {
 .bottom {
   width: 100%;
   position: relative;
+  opacity: 0;
+
+  @media screen and (max-width: 1024px) {
+    padding-left: 77px;
+  }
+
+  @include md {
+    padding-left: 50px;
+  }
+
+  @include sm {
+    padding-left: 30px;
+  }
+
+  @include xs {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
   .pagination {
     transition: all 1s;
@@ -623,6 +988,7 @@ html.is-animating .pagination {
     opacity: 1;
   }
 }
+
 
 // bottom end
 
@@ -636,81 +1002,124 @@ html.is-animating .pagination {
   max-width: 470px;
   width: 100%;
 
+
   @media screen and (max-width: 1770px) {
-    max-width: 450px;
+    max-width: 350px;
   }
 
   @media screen and (max-width: 1500px) {
-    max-width: 370px;
+    max-width: 330px;
   }
 
   @include lg {
+    max-width: 45%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    max-width: 30%;
+    transform: translate(40%, -50%) scale(0);
+  }
+
+  @include md {
+    max-width: 30%;
+  }
+
+  @include xs {
     max-width: 50%;
   }
+
+  @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+    max-width: 34%;
+  }
+
 
   img {
     width: 100%;
     // image-rendering: pixelated;
   }
+
+  &.them-demonstration {
+    right: 50%;
+    transform: translate(50%, -50%) !important;
+    max-width: 400px;
+    z-index: 10;
+    position: fixed;
+
+    @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+      max-width: 34%;
+    }
+
+
+    .play_btn_wrap {
+      opacity: 0;
+    }
+  }
 }
 
-.transition-terminalFade {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(50%, 0) !important;
-  transition: 0.4s;
-  opacity: 1;
-  z-index: 9;
-  line-height: 0;
-  max-width: 470px;
+
+
+.terminalFade {
+  max-width: 340px;
+
+  @media screen and (max-width: 1770px) {
+    max-width: 320px;
+  }
+
+  @media screen and (max-width: 1500px) {
+    max-width: 310px;
+  }
+
+  @include lg {
+    max-width: 45%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    max-width: 25%;
+    transform: translate(40%, -50%) scale(0);
+  }
+
+  @include md {
+    max-width: 25%;
+  }
+
+  @include xs {
+    max-width: 50%;
+  }
+
+  @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+    max-width: 20%;
+  }
+
+
+
+}
+
+
+.thematic-gif {
   width: 100%;
+  max-width: 59%;
+  bottom: 3.8%;
+  position: absolute;
+  border-radius: 20px;
+  overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
 
-  @media screen and (max-width: 1770px) {
-    max-width: 450px;
+  @include sm {
+    border-radius: 10px;
   }
+}
 
-  @media screen and (max-width: 1500px) {
-    max-width: 370px;
-  }
 
-  @include lg {
-    max-width: 50%;
-  }
+
+.terminalFadeHover {
+  transform: translate(0, -50%) !important;
 
   @media screen and (max-width: 1024px) {
-    top: 50%;
-    bottom: auto !important;
-    transform: translate(50%, -50%) !important;
-  }
-
-  img {
-    width: 100%;
-    // image-rendering: pixelated;
+    transform: translate(-50, -50%) !important;
   }
 }
-
-
-html.is-animating .transition-terminalFade {
-  transform: translate(50%, 2000px) !important;
-  opacity: 0;
-}
-
-.transition-terminalFade.slideUp {
-  transform: translate(50%, 0) !important;
-  opacity: 1;
-
-  @media screen and (max-width: 1024px) {
-    top: 50%;
-    bottom: auto !important;
-    transform: translate(50%, -50%) !important;
-  }
-
-}
-
-
-
-
 
 
 // processing start
@@ -727,14 +1136,44 @@ html.is-animating .transition-terminalFade {
 
 // about start
 .about {
+  .bottom {
+    padding: 0;
+  }
+
+  .col__content {
+    @include xs {
+      padding-right: 15px !important;
+    }
+  }
+
   .list {
     margin-left: 160px;
     max-width: 85%;
     width: 100%;
+
+    @media screen and (max-width: 1770px) {
+      margin-left: 140px;
+    }
+
+    @media screen and (max-width: 1770px) {
+      margin-left: 110px;
+    }
+
+    @include lg {
+      margin-left: 90px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      max-width: 100%;
+    }
   }
 
   .list__item {
     align-items: center;
+
+    @include xs {
+      max-width: 100%;
+    }
 
     .item__title {
       margin: 0;
@@ -749,8 +1188,29 @@ html.is-animating .transition-terminalFade {
   justify-content: space-between;
   margin-top: 70px;
 
+  @media screen and (max-width: 1024px) {
+    flex-basis: 100%;
+    margin-top: 40px;
+  }
+
+  @include md {
+    margin-top: 35px;
+  }
+
+  @include sm {
+    margin-top: 30px;
+  }
+
+  @include xs {
+    margin-top: 30px;
+  }
+
   .col__titlle-wrap {
     flex-basis: 45%;
+
+    @media screen and (max-width: 1024px) {
+      flex-basis: 100%;
+    }
   }
 
   .col__title {
@@ -762,6 +1222,12 @@ html.is-animating .transition-terminalFade {
     line-height: rem(27);
     letter-spacing: 0em;
     text-align: left;
+
+    @include md {
+      font-size: rem(20);
+      line-height: rem(22);
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -773,6 +1239,10 @@ html.is-animating .transition-terminalFade {
 
 .partners {
   padding: 0 50px;
+
+  @include xs {
+    padding: 0 15px;
+  }
 
   * {
     outline: none;
@@ -823,24 +1293,7 @@ html.is-animating .transition-terminalFade {
 // about end
 
 
-// terminal start
-.hidden_map {
-  opacity: 0;
-  position: absolute;
 
-  .terminal_map,
-  .contacts_map {
-
-    position: absolute;
-
-    iframe {
-      width: 0 !important;
-      height: 0 !important;
-    }
-  }
-}
-
-// terminal end
 
 // contacts start
 .contacts {
@@ -849,17 +1302,65 @@ html.is-animating .transition-terminalFade {
   flex-wrap: wrap;
   justify-content: space-between;
 
+  .col__content {
+    @include xs {
+      padding-right: 15px !important;
+    }
+  }
+
   &__item {
     flex-basis: 43%;
 
+    @media screen and (max-width: 1770px) {
+      flex-basis: 46%;
+    }
+
+    @media screen and (max-width: 1500px) {
+      flex-basis: 48%;
+    }
+
+    @media screen and (max-width: 1024px) {
+      flex-basis: 100%;
+      margin-bottom: 50px;
+    }
+
+    @include xs {
+      margin-bottom: 25px;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+
     * {
-      font-size: rem(30);
+      font-size: rem(24);
       font-style: normal;
       font-weight: 400;
       line-height: rem(37);
       letter-spacing: 0em;
       text-align: left;
       color: $wc;
+
+      @media screen and (max-width: 1500px) {
+        font-size: rem(20);
+        line-height: rem(30);
+      }
+
+      @media screen and (max-width: 1400px) {
+        font-size: rem(16);
+        line-height: rem(24);
+      }
+
+      @media screen and (max-width: 1024px) {
+        font-size: rem(30);
+        line-height: rem(32);
+      }
+
+      @include xs {
+        font-size: rem(18);
+        line-height: rem(22);
+        font-weight: 300;
+      }
     }
 
     ul {
@@ -867,11 +1368,28 @@ html.is-animating .transition-terminalFade {
         display: inline-flex;
         align-items: center;
         flex-direction: row;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
+
+        @media screen and (max-width: 1770px) {
+          margin-bottom: 23px;
+        }
+
+        @media screen and (max-width: 1500px) {
+          margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: 1024px) {
+          display: flex;
+          margin-bottom: 30px;
+        }
+
+        @include xs {
+          margin-bottom: 12px;
+        }
 
         span {
-          width: 50px;
-          height: 50px;
+          width: 45px;
+          height: 45px;
           overflow: hidden;
           border-radius: 100%;
           background-color: $wc;
@@ -880,6 +1398,27 @@ html.is-animating .transition-terminalFade {
           justify-content: center;
           background-color: $wc;
           margin-right: 15px;
+
+          @media screen and (max-width: 1500px) {
+            padding: 5px;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+          }
+
+          @media screen and (max-width: 1024px) {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            padding: 0;
+          }
+
+          @include xs {
+            width: 38px;
+            height: 38px;
+            padding: 3px;
+            margin-right: 10px;
+          }
         }
 
         a {
@@ -896,6 +1435,22 @@ html.is-animating .transition-terminalFade {
   }
 }
 
+.social {
+  li {
+    margin-right: 13px;
+    display: inline-block !important;
+
+    span {
+      margin-right: 0 !important;
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
 
 // contacts end
 
@@ -907,11 +1462,42 @@ html.is-animating .transition-terminalFade {
   height: 100%;
   position: relative;
 
+  @media screen and (max-width: 1024px) {
+    box-sizing: border-box;
+    padding-top: 140px;
+    min-height: 1200px;
+  }
+
+  @include xs {
+    padding-top: 44px;
+    min-height: 600px;
+    box-sizing: border-box;
+  }
+
   .map_wrap {
     position: absolute;
     opacity: 1;
     width: 100% !important;
     height: 100% !important;
+
+    iframe {
+      @media screen and (max-width: 1024px) {
+        height: 100% !important;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      height: 920px !important;
+      max-width: 85%;
+      border-radius: 7px;
+      overflow: hidden;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @include xs {
+      height: 500px !important;
+    }
 
     iframe {
       width: 100% !important;
@@ -923,3 +1509,36 @@ html.is-animating .transition-terminalFade {
 }
 
 // maps end
+
+// ie start
+
+.col {
+  &:first-child {
+    .col__wrap {
+      height: 100vh;
+      // display: -ms-flexbox;
+      // display: -webkit-flex;
+      // display: flex;
+      // -webkit-flex-direction: column;
+      // -ms-flex-direction: column;
+      // flex-direction: column;
+      // -webkit-flex-wrap: nowrap;
+      // -ms-flex-wrap: nowrap;
+      // flex-wrap: nowrap;
+      // -webkit-justify-content: space-between;
+      // -ms-flex-pack: justify;
+      // justify-content: space-between;
+      // -webkit-align-content: stretch;
+      // -ms-flex-line-pack: stretch;
+      // align-content: stretch;
+      // -webkit-align-items: flex-start;
+      // -ms-flex-align: start;
+      // align-items: flex-start;
+    }
+  }
+}
+
+.ie .btn {}
+
+
+// ie end

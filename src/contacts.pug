@@ -3,14 +3,7 @@ block title
   | main
 block main
   .wrapper.contacts#swup(style="background-image: url('assets/img/bg.webp')")
-    .col(style="background-image: url('assets/img/bg.webp')")  
-      .col__angle
-        .angle
-          svg(viewBox="0 0 1281.3333 1242.6667")
-            path(style="fill: #fff;" d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
-        .angle
-          svg(viewBox="0 0 1281.3333 1242.6667")
-            path(style="fill: #fff;" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
+    .col 
       .col__wrap        
         include includes/header/header
         .col__content.transition-fadeTop
@@ -44,20 +37,13 @@ block main
                       img(src=icon, alt="") 
               +social('assets/img/instagram.png')  
               +social('assets/img/facebook.png')  
-              +social('assets/img/twitter.png')  
 
     .col
       .col__wrap
-        .col__angle
-          .angle
-            svg(viewBox="0 0 1281.3333 1242.6667")
-              path(style="fill: #fff;" d="m 1243.7632,0 h 37.5701 l 0.075,37.005885 c 0,0 -2.5584,-31.9803945 -37.6455,-37.005885 z")
-          .angle
-            svg(viewBox="0 0 1281.3333 1242.6667")
-              path(style="fill: #fff;" d="m 1281.5915,1200.6354 -0.2582,42.0313 -42.5042,0.5483 c 0,0 40.1624,2.3093 42.7624,-42.5796 z")
         .col__content
           .contacts_map.transition-fadeTop 
             .map_wrap
+              <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1FRyZLUMEV44e9IQozyAH3dPNC3vPUox8" width="640" height="480"></iframe>
               
   include includes/scripts
 
