@@ -9,6 +9,8 @@ body {
   height: 100%;
   position: relative;
   font-family: $roboto;
+  -ms-overflow-style: none;
+  overflow: auto;
 
   @media screen and (max-width: 1024px) {
     height: auto;
@@ -18,8 +20,48 @@ body {
 .them-demonstration-layout {
   transition: $tr;
   overflow: hidden;
+  height: 100vh;
+  position: relative;
 
-  &:after {
+  .col {
+    &:first-child {
+
+      .col__content {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0 !important;
+        padding: 15px !important;
+
+        .col__titlle-wrap {
+          filter: blur(4px);
+        }
+      }
+    }
+  }
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    filter: blur(4px);
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    filter: blur(4px);
+  }
+
+
+
+
+  &:before {
     position: absolute;
     content: '';
     top: 0;
@@ -28,7 +70,22 @@ body {
     left: 0;
     background-color: rgba(0, 0, 0, .6);
     transition: $tr;
-    z-index: 9;
+    z-index: 1;
+  }
+
+  .hamburger {
+    z-index: 0;
+  }
+
+  .col__content {
+    height: 100%;
+
+    * {
+      pointer-events: none;
+      color: rgba(0, 0, 0, .6) !important;
+      fill: rgba(0, 0, 0, .6) !important;
+      border-color: rgba(0, 0, 0, .6) !important;
+    }
   }
 }
 
@@ -40,6 +97,7 @@ body {
     display: block;
   }
 }
+
 
 a {
   text-decoration: none;
@@ -192,11 +250,9 @@ button {
 
     &:first-child {
       @media screen and (max-width: 1024px) {
-        height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
         background-size: cover;
         background-position: bottom left;
-        background-image: url('/assets/img/bg.webp')
+        background-image: url('/assets/img/bg.jpg')
       }
 
 
@@ -209,21 +265,37 @@ button {
         margin: 0;
         height: auto;
         width: 100%;
-        padding-right: var(--totalWidth);
+        // padding-right: var(--totalWidth);
+        padding-right: 220px;
         box-sizing: border-box;
-        margin-bottom: 20px;
+        margin-top: 85px;
+        margin-bottom: 85px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        @media screen and (max-width: 1770px) {
+          padding-right: 150px;
+        }
+
+        @include lg {
+          padding-right: 90px;
+        }
 
         @media screen and (max-width: 1024px) {
           padding-left: 77px;
+          padding-right: 200px;
         }
 
         @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
-          height: 80vh;
           justify-content: center;
+          margin-top: 85px;
+          margin-bottom: 85px;
         }
 
         @include md {
           padding-left: 50px;
+          padding-right: 20%;
         }
 
         @include sm {
@@ -232,25 +304,31 @@ button {
 
         @include xs {
           padding-left: 15px;
+          padding-right: 40%;
         }
 
         @media (orientation: landscape) {
-          padding-top: 50px;
-          padding-bottom: 50px;
+          // padding-bottom: 50px;
         }
-  
-        
+
+      }
+
+      .col__titlle-wrap {
+        max-width: 100%;
       }
 
       .col__wrap {
         border-radius: 0 2.8% 2.8% 0;
         height: 100%;
-        flex-direction: column;
-        justify-content: space-between;
+        // flex-direction: column;
+        // justify-content: space-between;
         overflow: hidden;
         padding: 52px 30px 52px 96px;
         position: relative;
         box-sizing: border-box;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
 
         @media screen and (max-width: 1500px) {
           padding: 40px 50px;
@@ -303,7 +381,7 @@ button {
         width: 100%;
         height: 100%;
         justify-content: center;
-
+        padding: 0 !important;
 
         // &:before {
         //   position: absolute;
@@ -876,8 +954,10 @@ button {
   }
 
   @include xs {
-    height: 100px;
-    width: 100px;
+    height: 85px;
+    width: 85px;
+    left: 10%;
+    padding-left: 0;
   }
 }
 
@@ -965,6 +1045,7 @@ html.is-animating .pagination {
   width: 100%;
   position: relative;
   opacity: 0;
+  transition: $tr;
 
   @media screen and (max-width: 1024px) {
     padding-left: 77px;
@@ -1003,6 +1084,32 @@ html.is-animating .pagination {
   max-width: 470px;
   width: 100%;
 
+  @media screen and (max-width: 1024px) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.thematic_mobile {
+    opacity: 0;
+    pointer-events: none;
+
+
+    @media screen and (max-width: 1024px) {
+      opacity: 1;
+      pointer-events: inherit;
+      max-width: 40%;
+      transform: translate(40%, -50%) scale(0);
+    }
+
+    @include xs {
+      max-width: 67%;
+    }
+
+    @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+      max-width: 30%;
+    }
+
+  }
 
   @media screen and (max-width: 1770px) {
     max-width: 350px;
@@ -1016,22 +1123,7 @@ html.is-animating .pagination {
     max-width: 45%;
   }
 
-  @media screen and (max-width: 1024px) {
-    max-width: 30%;
-    transform: translate(40%, -50%) scale(0);
-  }
 
-  @include md {
-    max-width: 30%;
-  }
-
-  @include xs {
-    max-width: 50%;
-  }
-
-  @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
-    max-width: 34%;
-  }
 
 
   img {
@@ -1043,7 +1135,6 @@ html.is-animating .pagination {
     right: 50%;
     transform: translate(50%, -50%) !important;
     max-width: 400px;
-    z-index: 10;
     position: fixed;
 
     @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
@@ -1060,35 +1151,35 @@ html.is-animating .pagination {
 
 
 .terminalFade {
-  max-width: 340px;
+  max-width: 340px !important;
 
   @media screen and (max-width: 1770px) {
-    max-width: 320px;
+    max-width: 320px !important;
   }
 
   @media screen and (max-width: 1500px) {
-    max-width: 310px;
+    max-width: 310px !important;
   }
 
   @include lg {
-    max-width: 45%;
+    max-width: 45% !important;
   }
 
   @media screen and (max-width: 1024px) {
-    max-width: 25%;
+    max-width: 25% !important;
     transform: translate(40%, -50%) scale(0);
   }
 
   @include md {
-    max-width: 25%;
+    max-width: 25% !important;
   }
 
   @include xs {
-    max-width: 50%;
+    max-width: 50% !important;
   }
 
   @media only screen and (max-device-width : 1024px) and (orientation : landscape) {
-    max-width: 20%;
+    max-width: 20% !important;
   }
 
 
@@ -1137,31 +1228,39 @@ html.is-animating .pagination {
 
 // about start
 .about {
+  .thematic_mobile {
+    display: none;
+  }
+
   .bottom {
     padding: 0;
   }
 
   .col__content {
+    padding-right: 0 !important;
+
+    @media screen and (max-width: 1024px) {
+      padding-top: 40px;
+    }
+
     @include xs {
       padding-right: 15px !important;
     }
   }
 
   .list {
-    margin-left: 160px;
-    max-width: 85%;
-    width: 100%;
+    padding-left: 120px;
 
     @media screen and (max-width: 1770px) {
-      margin-left: 140px;
+      padding-left: 100px;
     }
 
-    @media screen and (max-width: 1770px) {
-      margin-left: 110px;
+    @media screen and (max-width: 1600px) {
+      padding-left: 90px;
     }
 
     @include lg {
-      margin-left: 90px;
+      padding-left: 45px;
     }
 
     @media screen and (max-width: 1024px) {
@@ -1190,7 +1289,7 @@ html.is-animating .pagination {
   margin-top: 70px;
 
   @media screen and (max-width: 1024px) {
-    flex-basis: 100%;
+    max-width: 100%;
     margin-top: 40px;
   }
 
@@ -1207,10 +1306,11 @@ html.is-animating .pagination {
   }
 
   .col__titlle-wrap {
-    flex-basis: 45%;
+    width: 100%;
+    max-width: 45% !important;
 
     @media screen and (max-width: 1024px) {
-      flex-basis: 100%;
+      max-width: 100% !important;
     }
   }
 
@@ -1300,28 +1400,36 @@ html.is-animating .pagination {
 .contacts {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
 
   .col__content {
+    padding-right: 0 !important;
+
     @include xs {
       padding-right: 15px !important;
     }
   }
 
   &__item {
-    flex-basis: 43%;
+    width: 100%;
+    max-width: 43%;
+    display: inline-block;
 
     @media screen and (max-width: 1770px) {
-      flex-basis: 46%;
+      max-width: 46%;
     }
 
     @media screen and (max-width: 1500px) {
-      flex-basis: 48%;
+      max-width: 48%;
     }
 
     @media screen and (max-width: 1024px) {
-      flex-basis: 100%;
+      max-width: 100%;
       margin-bottom: 50px;
     }
 
@@ -1440,6 +1548,7 @@ html.is-animating .pagination {
   li {
     margin-right: 13px;
     display: inline-block !important;
+    margin-bottom: 0 !important;
 
     span {
       margin-right: 0 !important;
@@ -1510,36 +1619,3 @@ html.is-animating .pagination {
 }
 
 // maps end
-
-// ie start
-
-.col {
-  &:first-child {
-    .col__wrap {
-      height: 100vh;
-      // display: -ms-flexbox;
-      // display: -webkit-flex;
-      // display: flex;
-      // -webkit-flex-direction: column;
-      // -ms-flex-direction: column;
-      // flex-direction: column;
-      // -webkit-flex-wrap: nowrap;
-      // -ms-flex-wrap: nowrap;
-      // flex-wrap: nowrap;
-      // -webkit-justify-content: space-between;
-      // -ms-flex-pack: justify;
-      // justify-content: space-between;
-      // -webkit-align-content: stretch;
-      // -ms-flex-line-pack: stretch;
-      // align-content: stretch;
-      // -webkit-align-items: flex-start;
-      // -ms-flex-align: start;
-      // align-items: flex-start;
-    }
-  }
-}
-
-.ie .btn {}
-
-
-// ie end

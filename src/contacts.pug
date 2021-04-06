@@ -2,7 +2,7 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper.contacts#swup(style="background-image: url('assets/img/bg.webp')")
+  .wrapper.contacts#swup(style="background-image: url('assets/img/bg.jpg')")
     .col 
       .col__wrap        
         include includes/header/header
@@ -25,11 +25,12 @@ block main
                 h1.col__title.col__title--thin Наш адрес:
                 ul
                   li Кыргызстан, г. Бишкек, БЦ Монолит (офис 803-804)
+                      
         div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s")
           .contacts__item.contacts__item--social
             .col__titlle-wrap.transition-fadeTop
               h1.col__title.col__title--thin Социальные сети:
-            ul.social
+            ul.social.transition-fadeTop
               mixin social(icon, link)
                 li
                   span

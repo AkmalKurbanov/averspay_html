@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 
 
+
   $(".map_wrap").on({
     'mouseenter': function () {
       $('.terminalFade').addClass('terminalFadeHover');
@@ -136,7 +137,7 @@ $(document).ready(function () {
   $('.nav ul li i:not(:first)').remove()
   setTimeout(function () {
     $('.bottom').css('opacity', 1);
-  }, 500);
+  }, 1100);
 
   $('.col .col__wrap:first').prepend('<div class="mobile_menu"><div class="mobile_menu-wrap"><div class="second_level_menu"></div><div class="first_level_menu"></div></div></div>');
   $('.nav ul').not('.nav ul li ul').clone().appendTo('.first_level_menu')
@@ -183,7 +184,7 @@ $(document).ready(function () {
     $('body').removeClass('scroll-block');
     $('.thematic-image').addClass('transition-thematicImage');
 
-    setTimeout(function () {
+
       $('.wide').addClass('wide-js');
       $('.normal').addClass('normal-js');
 
@@ -219,15 +220,14 @@ $(document).ready(function () {
           }, {
             breakpoint: 576,
             settings: {
-              slidesToShow: 3
+              slidesToShow: 4
             }
           }
         ]
       });
       // parnters start end  
 
-      $('.bottom').css('opacity', 1);
-    }, 600);
+
 
 
   });
@@ -235,7 +235,7 @@ $(document).ready(function () {
 
 
 
-  setTimeout(function () {
+ 
     $('.wide').addClass('wide-js');
 
     // parnters start
@@ -269,13 +269,12 @@ $(document).ready(function () {
         }, {
           breakpoint: 576,
           settings: {
-            slidesToShow: 3
+            slidesToShow: 4
           }
         }
       ]
     });
 
-  }, 600);
 
 
 
@@ -295,13 +294,14 @@ $(document).ready(function () {
       }
     });
   });
+  
 
   wow = new WOW({
     boxClass: 'wow',
     animateClass: 'animated',
     offset: 0,
     mobile: false,
-    live: true
+    live: true,
   })
   wow.init();
 
@@ -327,9 +327,9 @@ $(document).ready(function () {
 
   document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 
-  window.addEventListener('resize', () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  });
+  // window.addEventListener('resize', () => {
+  //   let vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty('--vh', `${vh}px`);
+  // });
 
 });

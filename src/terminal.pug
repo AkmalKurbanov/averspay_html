@@ -2,13 +2,13 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper#swup(style="background-image: url('assets/img/bg.webp')")    
+  .wrapper#swup(style="background-image: url('assets/img/bg.jpg')")    
     .col
       div(class="thematic-image terminalFade")
         img(src="assets/img/terminal.png", alt="")
       .col__wrap     
         include includes/header/header
-        .col__content
+        .col__content.transition-fadeTop
           .col__titlle-wrap.transition-fadeTop
             h1(class="col__title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Терминалы Averspay
             h2(class="col__sub-title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Разветвлённая сеть платежных терминалов по <br> территории Кыргызской Республики
@@ -17,6 +17,8 @@ block main
               span.btn__bubble
               a.btn__inner(href='#')
                 span.btn__text Подать заявку на подключение
+          div(class="thematic-image thematic_mobile terminalFade").transition-fade
+            img(src="assets/img/terminal.png", alt="")    
         div(class="bottom wow fadeInUp transition-fadeTop")
           .pagination
             
@@ -26,7 +28,7 @@ block main
           .terminal_map.transition-fadeTop
             .map_wrap
               <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Y1wi_kxje7bwcklmKZ-sy2RPFARilLDp" width="640" height="480"></iframe>
-              
+             
 
 
   include includes/scripts 

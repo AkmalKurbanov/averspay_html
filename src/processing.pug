@@ -2,13 +2,13 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper.processing#swup(style="background-image: url('assets/img/bg.webp')")
+  .wrapper.processing#swup(style="background-image: url('assets/img/bg.jpg')")
     .col
       div(class="thematic-image").transition-fade
         img(src="assets/img/proc.png", alt="")
       .col__wrap        
         include includes/header/header
-        .col__content
+        .col__content.transition-fadeTop
           .col__titlle-wrap.transition-fadeTop
             h1(class="col__title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Процессинг
             h2(class="col__sub-title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Эффективное и надёжное программное <br> обеспечение “Global pay” 
@@ -16,9 +16,14 @@ block main
               span.btn__bubble
               a.btn__inner(href='#')
                 span.btn__text Подать заявку на подключение
+          div(class="thematic-image thematic_mobile").transition-fade
+            .play_btn_wrap
+              .play_btn
+            .thematic-gif
+              img(src="assets/img/1.gif", alt="")
+            img(src="assets/img/border.png", alt="")          
         div(class="bottom")
           .pagination
-              
     .col
       .col__content
         .list.transition-fadeTop
@@ -26,10 +31,9 @@ block main
             div(class="list__item item wow slideInRight" data-wow-duration="1s" data-wow-delay=transitionDelay)
               .item__icon
                 img(src=icon, alt="")
-                //- i(class=icon)
               .item__desc
                 h3.item__title=title
-                p.item__desc=desc  
+                p=desc  
           +litsItem('assets/img/proc1.svg','Система счетов','Разработанная система счетов для более гибкой и удобной работы платёжной системы.','.5s')
           +litsItem('assets/img/proc2.svg','Быстрота', 'До 1000 операций в секунду.','.6s')
           +litsItem('assets/img/proc3.svg','Аутсорсинг','Предоставление услуг по аутсорсингу процессинга для сторонних платёжных систем.','.7s')

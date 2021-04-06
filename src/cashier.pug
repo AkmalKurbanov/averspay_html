@@ -2,7 +2,7 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper#swup(style="background-image: url('assets/img/bg.webp')")
+  .wrapper#swup(style="background-image: url('assets/img/bg.jpg')")
     .col
       div(class="thematic-image").transition-fade
         .play_btn_wrap
@@ -22,6 +22,12 @@ block main
               a.btn__inner(href='#')
                 span.btn__text Подать заявку на подключение
 
+          div(class="thematic-image thematic_mobile").transition-fade
+            .play_btn_wrap
+              .play_btn
+            .thematic-gif
+              img(src="assets/img/1.gif", alt="")
+            img(src="assets/img/border.png", alt="")         
         div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s")
           .pagination
             
@@ -35,7 +41,7 @@ block main
                 //- i(class=icon)
               .item__desc
                 h3.item__title=title
-                p.item__desc=desc  
+                p=desc  
           +litsItem('assets/img/cashier1.svg','Низкие комиссии','Более выгодная альтернатива банковским PoS терминалам.','.5s')
           +litsItem('assets/img/cashier2.svg','Удобство', 'Отслеживание истории платежей по общей кассе а также по каждому отдельному кассиру.','.6s')
           +litsItem('assets/img/cashier3.svg','Доступность','Возможность принимать любые популярные методы платежей.','.7s')

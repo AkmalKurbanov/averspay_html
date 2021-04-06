@@ -2,7 +2,7 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper.wide.about#swup(style="background-image: url('assets/img/bg.webp')")
+  .wrapper.wide.about#swup(style="background-image: url('assets/img/bg.jpg')")
     .col 
       .col__wrap        
         include includes/header/header
@@ -25,8 +25,10 @@ block main
                 | объединенных для каждого
                 | клиента через мобильный интерфейс.
 
+                    
+
         div(class="bottom wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s")
-          .partners
+          .partners.transition-fadeTop
             .partners__slider.partners-js
               mixin partnrer(img ,link)
                 .partners__item
@@ -47,7 +49,6 @@ block main
             div(class="list__item item wow slideInRight" data-wow-duration="0.5s" data-wow-delay=transitionDelay)
               .item__icon
                 img(src=icon, alt="")
-                //- i(class=icon)
               .item__desc
                 h3.item__title=title
           +litsItem('assets/img/about1.svg','10 лет на рынке.','.5s')

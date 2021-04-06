@@ -2,7 +2,7 @@ extends layout/main/main
 block title
   | main
 block main
-  .wrapper#swup(style="background-image: url('assets/img/bg.webp')")    
+  .wrapper#swup(style="background-image: url('assets/img/bg.jpg')")    
     .col
       div(class="thematic-image").transition-fade
         .play_btn_wrap
@@ -12,7 +12,7 @@ block main
         img(src="assets/img/border.png", alt="")
       .col__wrap         
         include includes/header/header
-        .col__content
+        .col__content.transition-fadeTop
           .col__titlle-wrap.transition-fadeTop
             h1(class="col__title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".5s") Мобильная платёжная <br> платформа “Averspay”
             h2(class="col__sub-title wow bounceInLeft" data-wow-duration=".7s" data-wow-delay=".6s") Инновационное решение по интеграции <br>
@@ -41,7 +41,12 @@ block main
                   .btn__download 
                     span Скачать
                     | в Google Play
-              
+          div(class="thematic-image thematic_mobile").transition-fade
+            .play_btn_wrap
+              .play_btn
+            .thematic-gif
+              img(src="assets/img/1.gif", alt="")
+            img(src="assets/img/border.png", alt="")             
         div(class="bottom wow fadeInUp transition-fadeTop")
           .pagination
             
@@ -53,17 +58,15 @@ block main
             div(class="list__item item wow slideInRight" data-wow-duration="1s" data-wow-delay=transitionDelay)
               .item__icon
                 img(src=icon, alt="")
-                //- i(class=icon)
               .item__desc
                 h3.item__title=title
-                p.item__desc=desc   
+                p=desc   
           +litsItem('assets/img/purse1.svg','Общедоступность','Широкая география проведения платежей.','.5s')
           +litsItem('assets/img/purse2.svg','Быстрота', 'Быстрая и удобная оплата в интернете и в торговых точках, ресторанах и кафе.','.6s')
           +litsItem('assets/img/purse3.svg','Программа лояльности','Внедеренная система бонусов для пользователей системы.','.7s')
           +litsItem('assets/img/purse4.svg','Переводы и кредиты','Отправка и получение переводов внутри системы. Получение кредита в приложении, а также возможность получения кредитов внутри системы.','.8s')
           +litsItem('assets/img/purse5.svg','Надёжность','Высокая степень защиты платёжной платформы. А также Для более высокой сохраности денежных средств пользователя, от внешних экономический факторов, cуществует возможность хранения баланса в золоте.','.9s')
-
-
+  
   include includes/scripts 
   
     
